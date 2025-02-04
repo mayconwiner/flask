@@ -1,5 +1,5 @@
 from flask import Flask , render_template, url_for
-
+from forms import FormCriarConta, FormLogin
 
 app = Flask(__name__)
 
@@ -23,7 +23,9 @@ def usuarios():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    form_login = FormLogin()
+    form_criarconta = FormCriarConta()
+    return render_template('login.html', FormLogin=form_login, FormCriarConta=form_criarconta)
 
  
 
