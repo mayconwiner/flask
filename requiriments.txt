@@ -1,0 +1,46 @@
+requests
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-RESTful
+Flask-CORS
+
+# Autenticação e Segurança
+Flask-Login
+Flask-JWT-Extended
+Flask-Security
+Flask-Bcrypt  # Para hash de senhas
+Flask-Talisman  # Segurança HTTP (CSP, HSTS, XSS Protection)
+
+# Banco de Dados e Cache
+Flask-Redis  # Integração com Redis para cache e sessões
+Flask-Caching  # Suporte a caching para melhorar performance
+Flask-Session  # Gerenciamento de sessões do usuário
+
+# Formulários e Validação
+Flask-WTF  # Suporte a formulários
+Flask-Inputs  # Validação de entrada para APIs
+
+# Email e Notificações
+Flask-Mail  # Envio de emails
+Flask-SocketIO  # Suporte a WebSockets em tempo real
+
+# Monitoramento e Logs
+Flask-APScheduler  # Agendamento de tarefas
+Flask-Logging  # Gerenciamento de logs
+flask
+Werkzeug
+jinja2
+flask-login
+flask_migrate
+WTForms
+flask_wtf
+flask-sqlalchemy
+sqlalchemy
+email_validator
+flask-restx
+python-dotenv
+gunicorn
+Flask-Minify
+#flask_mysqldb
+#psycopg2-binary
