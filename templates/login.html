@@ -4,13 +4,51 @@
   <hr />
   <div class="row">
     <div class="col">
-      <h1>Login</h1>
-      {{ FormLogin.email }} {{ FormLogin.senha }}
+      <form method="post" class="border p-5 mt-2" action="#">
+        <legend>Login</legend>
+        <fieldset>
+          <div class="form-group">
+            {{ formLogin.email.label (class="form-control-label") }} {{
+            formLogin.email (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{formLogin.senha.label (class="form-control-label") }} {{
+            formLogin.senha (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{formLogin.lembrar_dados.label (class="form-control-label") }} {{
+            formLogin.lembrar_dados (class="form-check-input") }}
+          </div>
+        </fieldset>
+        {{formLogin.botao_submit_login (class="btn btn-primary mt-4") }}
+      </form>
     </div>
 
     <div class="col">
-      <h1>Criar Conta</h1>
-      {{ FormCriarConta.nome }} {{ FormCriarConta.email }}
+      <form method="post" class="border p-5 mt-2" action="#">
+        <legend>Criar Conta</legend>
+        <fieldset>
+          <div class="form-group">
+            {{ formCriarConta.nome.label (class="form-control-label") }} {{
+            formCriarConta.nome (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{formCriarConta.email.label (class="form-control-label") }} {{
+            formCriarConta.email (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{formCriarConta.senha.label (class="form-control-label") }}
+            {{formCriarConta.senha (class="form-control") }}
+          </div>
+          <div class="form-group">
+            {{formCriarConta.confirmar_senha.label
+            (class="form-control-label")}} {{ formCriarConta.confirmar_senha
+            (class="form-control")}}
+          </div>
+        </fieldset>
+        {{formCriarConta.botao_submit_criarconta (class="btn btn-primary mt-2")
+        }}
+      </form>
     </div>
   </div>
 </div>

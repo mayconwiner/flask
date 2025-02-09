@@ -25,7 +25,7 @@ def usuarios():
 def login():
     form_login = FormLogin()
     form_criarconta = FormCriarConta()
-    return render_template('login.html', FormLogin=form_login, FormCriarConta=form_criarconta)
+    return render_template('login.html', formLogin=form_login, formCriarConta=form_criarconta)
 
  
 
