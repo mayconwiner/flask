@@ -1,6 +1,7 @@
 from flask import Flask , render_template, url_for, request, redirect, flash
-from teamwiner import app
+from teamwiner import app, db 
 from teamwiner.forms import FormLogin, FormCriarConta
+from teamwiner.models import Usuario
 
 lista_usuarios = ['Maycon','João','Beatriz','José', 'Italo','Marina','Rosimar','Ourivan','Amanda','Lucas','Rafael']
 
@@ -24,8 +25,10 @@ def login():
     if form_login.validate_on_submit() and 'botao_submit_login' in request.form:
         flash(f'Login feito com sucesso no e-mail: {form_login.email.data}', 'alert-success')
         return redirect(url_for('home'))
-    
     if form_criarconta.validate_on_submit() and 'botao_submit_criarconta' in request.form:
+        usuarios = Usuario(username=form_criarconta.username.data, email=form_criarconta.email.data, senha=form_criarconta.senha.data)
+        db.session.add(usuarios)
+        db.session.commit()
         flash(f'Conta criada para o e-mail: {form_criarconta.email.data}', 'alert-success')
         return redirect(url_for('home'))
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
