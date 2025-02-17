@@ -1,5 +1,5 @@
 from flask import Flask , render_template, url_for, request, redirect, flash
-from teamwiner import app, db 
+from teamwiner import app, db , bcrypt
 from teamwiner.forms import FormLogin, FormCriarConta
 from teamwiner.models import Usuario
 
@@ -26,7 +26,8 @@ def login():
         flash(f'Login feito com sucesso no e-mail: {form_login.email.data}', 'alert-success')
         return redirect(url_for('home'))
     if form_criarconta.validate_on_submit() and 'botao_submit_criarconta' in request.form:
-        usuarios = Usuario(username=form_criarconta.username.data, email=form_criarconta.email.data, senha=form_criarconta.senha.data)
+        senha_cript = bcrypt.generate_password_hash(form_criarconta.senha.data).decode('utf-8')
+        usuarios = Usuario(username=form_criarconta.username.data, email=form_criarconta.email.data, senha=senha_cript)
         db.session.add(usuarios)
         db.session.commit()
         flash(f'Conta criada para o e-mail: {form_criarconta.email.data}', 'alert-success')
