@@ -1,4 +1,4 @@
-from app import db
+from teamwiner import db
 from datetime import datetime
 
 class Usuario(db.Model):
