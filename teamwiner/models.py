@@ -1,7 +1,12 @@
-from teamwiner import db
+from teamwiner import db, login_manager
 from datetime import datetime
+from flask_login import UserMixin
 
-class Usuario(db.Model):
+@login_manager.user_loader
+def load_usuario(id_usuario):
+    return Usuario.query.get(int(id_usuario))
+
+class Usuario(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
