@@ -2,7 +2,7 @@ from flask import Flask , render_template, url_for, request, redirect, flash
 from teamwiner import app, db , bcrypt
 from teamwiner.forms import FormLogin, FormCriarConta
 from teamwiner.models import Usuario
-from flask_login import login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 
 lista_usuarios = ['Maycon','João','Beatriz','José', 'Italo','Marina','Rosimar','Ourivan','Amanda','Lucas','Rafael']
 
@@ -44,3 +44,22 @@ def login():
         flash(f'Conta criada para o e-mail: {form_criarconta.email.data}', 'alert-success')
         return redirect(url_for('home'))
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
+
+
+@app.route('/sair')
+@login_required
+def sair():
+    logout_user()
+    flash(f'Logout feito com sucesso', 'alert-success')
+    return redirect(url_for('home'))
+
+@app.route('/perfil')
+@login_required
+def perfil():
+    foto_perfil = url_for('static', filename='fotos_perfil/{}'.format(current_user.foto_perfil))
+    return render_template('perfil.html', foto_perfil=foto_perfil)
+
+@app.route('/post/criar')
+@login_required
+def criar_post():
+    return render_template('criarpost.html') 

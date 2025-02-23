@@ -32,6 +32,26 @@
         </li>
       </ul>
       <ul class="d-flex navbar-nav mb-2 mb-lg-0">
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            aria-current="page"
+            href="{{url_for('criar_post')}}"
+            >Criar Post</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{url_for('perfil')}}"
+            >Meu Perfil</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{url_for('sair')}}"
+            >Sair</a
+          >
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{{url_for('login')}}"
             >Login</a
@@ -42,6 +62,7 @@
             >Criar Conta</a
           >
         </li>
+        {% endif%}
       </ul>
     </div>
   </div>
