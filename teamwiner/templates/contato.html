@@ -1,5 +1,53 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %}
+<!-- corpo do arquivo contato.html -->
+{% block body %}
 <div class="container">
-  <h1>qualquer duvida mande um email para mayconwiner@gmail.com</h1>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center">Contato</h1>
+      <form style="width: 26rem">
+        <!-- Name input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="form4Example1">Nome</label>
+          <input type="text" id="form4Example1" class="form-control" />
+        </div>
+
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="form4Example2">Email </label>
+          <input type="email" id="form4Example2" class="form-control" />
+        </div>
+
+        <!-- Message input -->
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="form4Example3">Mensagem</label>
+          <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="form-check d-flex justify-content-center mb-4">
+          <input
+            class="form-check-input me-2"
+            type="checkbox"
+            value=""
+            id="form4Example4"
+            checked
+          />
+          <label class="form-check-label" for="form4Example4">
+            Envie -me uma cópia desta mensagem
+          </label>
+        </div>
+
+        <!-- Submit button -->
+        <button
+          data-mdb-ripple-init
+          type="button"
+          class="btn btn-primary btn-block mb-4"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

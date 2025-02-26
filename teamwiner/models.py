@@ -25,6 +25,7 @@ class post(db.Model):
     corpo = db.Column(db.Text, nullable=False)
     data_criacao = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     id_usuario = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
-
+    
     # def __repr__(self):
-    #     return f'<Post {self.titulo}>'
+   
+

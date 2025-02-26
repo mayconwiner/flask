@@ -1,20 +1,52 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %}
+<!-- Corpo do html usuarios -->
+{% block body %}
 <div class="container">
   <h1>Usuários</h1>
-  <table class="table table-striped">
+  <!-- Campo de Pesquisa -->
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="pesquisaInput"
+      placeholder="Pesquisar..."
+    />
+  </div>
+  <!-- Tabela de Usuários -->
+  <table id="tabelaExemplo" class="table table-striped" style="width: 100%">
     <thead>
       <tr>
         <th>Nome</th>
-        </tr>
+      </tr>
     </thead>
     <tbody>
       {% for usuario in lista_usuarios %}
       <tr>
         <td>{{ usuario }}</td>
-        </tr>
-        
+      </tr>
       {% endfor %}
-        </tbody>
-
-{% endblock %}
+    </tbody>
+  </table>
 </div>
+{% endblock %}
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    // Inicializar DataTable
+    var tabela = $("#tabelaExemplo").DataTable({
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json",
+      },
+    });
+
+    // Filtro de pesquisa personalizado
+    $("#pesquisaInput").on("keyup", function () {
+      tabela.search(this.value).draw();
+    });
+  });
+</script>
